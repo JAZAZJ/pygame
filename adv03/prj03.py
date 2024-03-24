@@ -74,7 +74,7 @@ clock = pygame.time.Clock()
 paint = False # 畫布狀態
 cnt = 0
 while True:
-    clock.tick(200)
+    clock.tick(20)
     mouse_pot = pygame.mouse.get_pos()
 
     #取得事件
