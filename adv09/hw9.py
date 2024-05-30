@@ -102,6 +102,7 @@ while True:
         if event.type==KEYDOWN:
             if event.key==pygame.K_SPACE and ds_y<=LIMIT_LOW:
                 jumpstate=True
+
     bg_update()
     move_dinosaur()
     score_update()
