@@ -27,7 +27,6 @@ class Warrior(Player): # 繼承Player類別
     def use_armor(self):
         self.health += self.armor
         return f"{self.name} 使用裝甲，增加了 {self.armor} 點體力！"
-
         return f"{self.name}使用裝甲增加了{self.armor}點體力"
 Player1 = Warrior("SCP Angus615",100,15,10,5)
 Player2 = Mage("Angus",80,10,5,20)
