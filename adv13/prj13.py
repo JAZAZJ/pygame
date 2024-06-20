@@ -222,7 +222,7 @@ gg_w = img_gg.get_width()  # 遊戲結束圖片寬度
 gg_h = img_gg.get_height()  # 遊戲結束圖片高度
 
 ######################敵人出現隊列######################
-max_enemies = 3  # 最大敵人數量，可以根據需要修改這個值，總共可以放幾個敵人在隊列中
+max_enemies = 5  # 最大敵人數量，可以根據需要修改這個值，總共可以放幾個敵人在隊列中
 enemies_queue = deque(maxlen=max_enemies)  # 使用deque來創建一個有最大長度的隊列
 active_enemies = []
 enemies_delay = 0  # 敵人出現間隔計數
