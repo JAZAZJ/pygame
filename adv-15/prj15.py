@@ -4,6 +4,7 @@ import sys
 import os
 from pygame.locals import *
 import random
+from typing import List
 
 
 ######################物件類別######################
@@ -104,7 +105,7 @@ def move_starship():
 
 
 def create_enemy():
-    emy_img = img_enemy
+    emy_img = random.choice(emy_show)
     emy_wh = emy_img.get_width() // 2
     emy_x = random.randint(emy_wh, bg_x - emy_wh)
     emy_y = random.randint(-bg_y, -emy_wh)
@@ -154,7 +155,14 @@ missiles = [Missile(0, 0, img_weapon, msl_shift) for _ in range(MISSLE_MAX)]
 msl_cooldown = 0
 msl_cooldown_max = 1
 ######################敵機設定######################
+emy_show = [img_enemy, img_enemy2]  # 敵機圖片
+
 emy_shift = 5  # 敵機移動速度
+emy_list: List[Enemy] = []  # 敵機物件列表
+emy_num = 5  # 敵機數量
+
+for i in range(emy_num):
+    emy_list.append(Enemy(*create_enemy(), emy_shift))
 enemy = Enemy(*create_enemy(), emy_shift)  # 建立敵機物件
 ######################主程式######################
 while True:
@@ -180,8 +188,14 @@ while True:
     for missile in missiles:
         missile.move()
         missile.draw(screen)
+
     enemy.move()  # 移動敵機
     enemy.draw(screen)  # 繪製敵機
     if not enemy.active:  # 檢查敵機是否活躍
         enemy.reset(*create_enemy(), emy_shift)
+    for enemy in emy_list:
+        enemy.move()  # 移動敵機2
+        enemy.draw(screen)  # 繪製敵機2
+        if not enemy.active:  # 檢查敵機是否活躍
+            enemy.reset(*create_enemy(), emy2_shift)
     pygame.display.update()
